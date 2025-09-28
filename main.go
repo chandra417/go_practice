@@ -118,7 +118,51 @@ func learnSliceTypes() {
 	newCopy := make([]int, len(copyExample))
 	copy(newCopy, copyExample)
 	newCopy[0] = 1
+	fmt.Println("copyExample ", copyExample)
 	fmt.Println("newCopy ", newCopy)
+}
+
+func learnMapTypes() {
+
+	mapEx := map[string]int{
+		"anil":  6000,
+		"rahul": 9000,
+	}
+
+	fmt.Println(mapEx)
+	mapEx["ravi"] = 8000
+
+	raviSalary := mapEx["ravi"]
+	fmt.Println("ravi salary - ", raviSalary)
+
+	unknownSalary := mapEx["unknown"] // Access a non-existent key returns the zero value (0 for int)
+	fmt.Println("unknown salary - ", unknownSalary)
+
+	users := make(map[int]string)
+	users[1] = "kohli"
+	users[2] = "sachin"
+
+	fmt.Println(users)
+
+	colors := map[string]bool{"green": true, "red": true}
+	fmt.Println("map size is - ", len(colors))
+
+	delete(colors, "green")
+	fmt.Println("map size is - ", len(colors))
+
+	delete(colors, "green")
+	fmt.Println("map size is - ", len(colors))
+
+	config := map[string]string{"host": "localhost"}
+	val, ok := config["host"]
+	if ok {
+		fmt.Println("host found - ", val)
+	}
+
+	val, ok = config["port"]
+	if !ok {
+		fmt.Println("port not found")
+	}
 }
 
 func main() {
@@ -126,4 +170,5 @@ func main() {
 	learnIntegerTypes()
 	learnStringTypes()
 	learnSliceTypes()
+	learnMapTypes()
 }
