@@ -86,11 +86,44 @@ func learnStringTypes() {
 
 	s := strconv.Itoa(99)
 	fmt.Println("Converted string:", s)
-	fmt.Printf("Variable type of s is: %T", s)
+	fmt.Printf("Variable type of s is: %T\n", s)
+}
+
+func learnSliceTypes() {
+
+	numbers := []int{10, 20, 30, 40, 50}
+	subNumbers := numbers[1:3]
+
+	fmt.Printf("numbers: %v\n", numbers)
+	fmt.Println(subNumbers)
+
+	subNumbers[0] = 100
+	fmt.Println(subNumbers)
+
+	fmt.Println("length - ", len(numbers))
+	fmt.Println("capacity - ", cap(numbers))
+
+	newVar := make([]int, 2, 5) // Create a slice with length 2, capacity 5
+	fmt.Printf("length: %d, capacity: %d\n", len(newVar), cap(newVar))
+
+	makeExample := make([]int, 0, 10) // Create a slice with length 0, capacity 5
+	fmt.Printf("length: %d, capacity: %d\n", len(makeExample), cap(makeExample))
+
+	appendExample := []int{1, 2, 3, 4, 5}
+	fmt.Printf("Before - length: %d, capacity: %d\n", len(appendExample), cap(appendExample))
+	appendExample = append(appendExample, 6, 7) // The capacity may have increased (e.g., doubled)
+	fmt.Printf("After - length: %d, capacity: %d\n", len(appendExample), cap(appendExample))
+
+	copyExample := []int{100, 200, 300, 400, 500}
+	newCopy := make([]int, len(copyExample))
+	copy(newCopy, copyExample)
+	newCopy[0] = 1
+	fmt.Println("newCopy ", newCopy)
 }
 
 func main() {
 	learnBoolean()
 	learnIntegerTypes()
 	learnStringTypes()
+	learnSliceTypes()
 }
